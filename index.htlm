@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>LIMINAL — Dreamcore Escape</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- LOADING SCREEN -->
+  <div id="loading-screen">
+    <div class="loading-inner">
+      <div class="loading-logo">LIMINAL</div>
+      <div class="loading-sub">spaces between spaces</div>
+      <div class="loading-bar-wrap">
+        <div class="loading-bar" id="loading-bar"></div>
+      </div>
+      <div class="loading-text" id="loading-text">Initializing world…</div>
+    </div>
+  </div>
+
+  <!-- AUTH SCREEN -->
+  <div id="auth-screen" class="hidden">
+    <div class="auth-box">
+      <div class="auth-logo">LIMINAL</div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-login" onclick="switchTab('login')">Entrar</button>
+        <button class="auth-tab" id="tab-register" onclick="switchTab('register')">Registrarse</button>
+      </div>
+      <div id="form-login" class="auth-form">
+        <input type="text" id="login-user" placeholder="Nombre de usuario" autocomplete="off" />
+        <input type="password" id="login-pass" placeholder="Contraseña" />
+        <button class="auth-btn" onclick="loginUser()">Entrar al mundo</button>
+        <div class="auth-msg" id="login-msg"></div>
+      </div>
+      <div id="form-register" class="auth-form hidden">
+        <input type="text" id="reg-user" placeholder="Nombre de usuario" autocomplete="off" />
+        <input type="password" id="reg-pass" placeholder="Contraseña" />
+        <input type="password" id="reg-pass2" placeholder="Confirmar contraseña" />
+        <button class="auth-btn" onclick="registerUser()">Crear cuenta</button>
+        <div class="auth-msg" id="reg-msg"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HUD / UI OVERLAY -->
+  <div id="hud" class="hidden">
+    <div id="hud-top">
+      <span id="hud-user">Jugador</span>
+      <span id="hud-level">Nivel 1 — Pradera Liminal</span>
+      <span id="hud-items">🔑 0 / 3</span>
+    </div>
+    <div id="hud-compass">
+      <div id="compass-needle">N</div>
+    </div>
+    <div id="interaction-prompt" class="hidden">
+      <span id="prompt-text">Presiona [E] para interactuar</span>
+    </div>
+    <div id="found-toast" class="hidden"></div>
+  </div>
+
+  <!-- GAME CANVAS -->
+  <canvas id="game-canvas"></canvas>
+
+  <!-- MOBILE JOYSTICK -->
+  <div id="joystick-container" class="hidden">
+    <div id="joystick-base">
+      <div id="joystick-thumb"></div>
+    </div>
+  </div>
+
+  <!-- MOBILE ACTION BUTTON -->
+  <div id="btn-interact" class="hidden">E</div>
+  <div id="btn-jump" class="hidden">↑</div>
+
+  <!-- PAUSE / MENU -->
+  <div id="pause-menu" class="hidden">
+    <div class="pause-box">
+      <div class="pause-title">PAUSADO</div>
+      <button onclick="resumeGame()">Continuar</button>
+      <button onclick="saveGame()">Guardar progreso</button>
+      <button onclick="logoutUser()">Cerrar sesión</button>
+    </div>
+  </div>
+
+  <!-- TRANSITION OVERLAY -->
+  <div id="level-transition" class="hidden">
+    <div class="transition-text" id="transition-text">Entrando al siguiente nivel…</div>
+  </div>
+
+  <script src="ui.js"></script>
+  <script src="player.js"></script>
+  <script src="world.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
+
